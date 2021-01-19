@@ -1,0 +1,24 @@
+<h2>Редактирование статьи</h2>
+<% if @post.errors.any?%>
+	<% @post.errors.full_messages.each do |message|%>
+		<div class="alert alert-danger"><%= message%></div>
+	<% end %>	
+<% end %>
+<%= form_for :post, url: post_path(@post),html: {multipart: true}, method: :patch do |f|%>
+
+	<div>
+		Название<br>
+		<%= f.text_field :title, class: 'form-control' %>
+	</div>
+	<div>
+		Текст статьи<br>
+		<%= f.text_area :body, class: 'form-control' %>
+	</div>
+		<div>
+		Картинка<br>
+		<%= f.file_field :image %>
+	</div>
+	<div><br>
+		<%= f.submit "Изменить", class: "btn btn-success" %>
+	</div>
+<% end %>
