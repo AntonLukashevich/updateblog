@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 
-#gem 'bootstrap', '~> 5.0.0.beta1'
+gem 'bootstrap'
 gem 'carrierwave'
 gem "mini_magick"
 
