@@ -1,42 +1,52 @@
-<div>
-    <%= @post.title %>
+<div class="row">
+  <div class="col">
+    <h3><%= @post.title %></h3>
+  </div>
 </div>
-<div>
-	<%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
-    <%= @post.body %>
+<div class="row" align="center">
+  <div class="col pb-2">
+    <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %><br>
+  </div>
 </div>
-<%= link_to "Редактировать", edit_post_path(@post), class: "btn btn-warning"%>
-<%= link_to "Удалить", post_path(@post), method: :delete, data: {confirm: "Хотите удалить?"}, class: "btn btn-danger"%>
+
+<div class="row">
+  <div class="col pb-2">
+    <h6><%= @post.body %></h6>
+  </div>
+</div>
+<div class="pt-2">
+  <%= link_to "Редактировать", edit_post_path(@post), class: "btn btn-warning btn-sm"%>
+  <%= link_to "Удалить", post_path(@post), method: :delete, data: {confirm: "Хотите удалить?"}, class: "btn btn-danger btn-sm"%>
+</div>
+
 <hr>
 <h6>Комментарии:</h6>
 <% @post.comments.each do |comment| %>
-<div class="alert alert-light">
-   <strong> <%= comment.username %>: </strong>
-
-        <%= comment.body%></u>
-
-</div>
+  <div class="alert alert-light">
+     <strong> <%= comment.username %>: </strong>
+          <%= comment.body%>
+  </div>
 <% end %>
 
 <hr>
-<h5>Добавьте комментарий</h5>
+<h6>Добавьте комментарий</h6>
 <% if @post.errors.any?%>
-<% @post.errors.full_messages.each do |message|%>
-<div class="alert alert-danger">
-    <%= message%>
-</div>
-<% end %>
+  <% @post.errors.full_messages.each do |message|%>
+  <div class="alert alert-danger">
+      <%= message%>
+  </div>
+  <% end %>
 <% end %>
 <%= form_for [@post, @post.comments.build] do |f|%>
-<div>
-    Пользователя<br>
-    <%= f.text_field :username, class: 'form-control' %>
-</div>
-<div>
-    Комментарий<br>
-    <%= f.text_area :body, class: 'form-control' %>
-</div>
-<div><br>
-    <%= f.submit "Добавить", class: "btn btn-success" %>
-</div>
+  <div>
+      Пользователя<br>
+      <%= f.text_field :username, class: 'form-control' %>
+  </div>
+  <div>
+      Комментарий<br>
+      <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <div class="pb-2">
+      <%= f.submit "Добавить", class: "btn btn-success btn-sm" %>
+  </div>
 <% end %>

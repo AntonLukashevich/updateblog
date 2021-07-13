@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 
 #gem 'bootstrap', '~> 5.0.0.beta1'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave'
 gem "mini_magick"
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -53,3 +53,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'rubocop-rails'
