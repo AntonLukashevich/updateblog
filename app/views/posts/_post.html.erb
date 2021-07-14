@@ -3,14 +3,15 @@
 	<section>
 		<%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb' if post.image? %>
 		<h3>
-			<%= link_to post.title, post_path(post)%></h3>
-			<small>
+			<%= link_to post.title, post_path(post)%>
+    </h3>
+			<small >
+        <%=post.user.email if post.user %> |
 				<time><%= post.created_at.to_date.strftime("%d %B, %Y")%></time>|
 				 <%= link_to "Изменить", edit_post_path(post)%>
 				 |
 				 <%= link_to "Удалить", post_path(post), method: :delete, data: {confirm: "Хотите удалить?"}%>
 			</small>
-
 	</section>	
 
  	<section class="post-summary clearfix">
